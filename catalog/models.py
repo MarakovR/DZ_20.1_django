@@ -4,7 +4,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=100, verbose_name='наименование')
     description = models.TextField(verbose_name='описание')
     picture = models.ImageField(verbose_name='изображение')
-    category = models.ForeignKey('category', on_delete=models.PROTECT, null=True, verbose_name='категория')
+    category = models.ForeignKey('category', on_delete=models.PROTECT, verbose_name='категория')
     price = models.IntegerField(verbose_name='цена')
     date_of_creation = models.DateTimeField(verbose_name='дата создания')
     date_changes = models.DateTimeField(verbose_name='дата изменения')
