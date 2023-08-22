@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import register
 
 from catalog.models import Product
@@ -17,10 +17,9 @@ def views_contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def product(request):
-    product_list = Product.objects.all()
+def item_products(request, pk):
     context = {
-        'object_list': product_list,
+        'object_list': Product.objects.filter(pk=pk),
         'title': 'Продукт'
     }
 
