@@ -1,29 +1,22 @@
 from django.shortcuts import render
 from django.template.defaultfilters import register
+from django.views.generic import ListView, DetailView
 
 from catalog.models import Product
 
 
-def index(request):
-    product_list = Product.objects.all()
-    context = {
-        'object_list': product_list,
-        'title': 'Каталог продуктов'
-    }
-    return render(request, 'catalog/index.html', context)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'catalog/index.html'
 
 
 def views_contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def item_products(request, pk):
-    context = {
-        'object_list': Product.objects.filter(pk=pk),
-        'title': 'Продукт'
-    }
-
-    return render(request, 'catalog/product.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'catalog/product.html'
 
 
 @register.filter(name='split')

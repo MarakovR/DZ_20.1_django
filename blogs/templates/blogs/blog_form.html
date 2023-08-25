@@ -1,0 +1,30 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="col">
+            <div class="card">
+              <div class="row g-0">
+
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Блог</h5>
+<!--                    <p class="card-text">Это более широкая карточка со вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту. Этот контент немного длиннее.</p>-->
+                      <form method="post">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+                          <button type="submit" class="btn btn-success">
+                              {% if object %}
+                              Сохранить
+                              {% else %}
+                              Создать
+                              {% endif %}
+                          </button>
+                      </form>
+                    <p class="card-text"><small class="text-body-secondary">Последнее обновление 3 минуты назад</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}
