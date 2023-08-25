@@ -3,21 +3,15 @@
 
 {% block content %}
 
-<div class="row mb-2">
-    <div class="col-md-12">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <h3 class="mb-0">{{object.title}} ({{ object.slug}})</h3>
-          <p class="card-text mb-auto">{{object.content}}</p>
-<!--          <p class="h5 text-success" >Цена: {{object.price}} рублей <span class="badge bg-success"></span></p>-->
-          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-           Просмотры: {{ object.views_count }}
+    <div class="card">
+              <div class="card-header">{{ object.slug}}</div>
+              <div class="card-body">
+                <h5 class="card-title">{{object.title}}</h5>
+                <p class="card-text">{{object.content}}</p>
+
             <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-          </a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-<!--          <img src={{ object.picture|mediapath }} width=" 300" height=" 300">-->
-        </div>
-      </div>
-    </div>
+            <a href="{% url 'blogs:list' %}" class="btn">К списку статей</a>
+              </div>
+              <div class="card-footer text-body-secondary">Просмотры: {{ object.views_count }}</div>
+            </div>
 {% endblock %}
